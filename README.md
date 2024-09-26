@@ -2,7 +2,7 @@
 # AirBnB Clone Of Fun! 
 
 This is a simplified clone of the AirBnB platform, built with the love of two students who are
-really scared to start it. So very little. 
+really scared to start it. So very little.
 
 ## Description
 
