@@ -4,15 +4,21 @@ from datetime import datetime
 
 '''
 Module for AirBnB console
+
 '''
 
 
 class BaseModel:
     '''
     Base class for all AirBnB models.
+    
+    Attributes:
+        id (str): Unique identifier for the object.
+        created_at (datetime): Date and time the object was created.
+        updated_at (datetime): Date and time the object was last updated.
     '''
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         '''
         Initializes a new BaseModel instance.
         '''
