@@ -1,0 +1,4 @@
+# This file lists all contributors to the repository.
+
+Ariel Lopez <Ariel.lopez@atlasschool.com> Git: NecroKnightMare
+Nathaniel Wilson  <Nathaniel.wilson@atlasschool.com> Git: Natdog225
