@@ -3,16 +3,14 @@
 from models.base_model import BaseModel
 
 '''
-City inherits from BaseModel
+Amenity inherits from BaseModel
 '''
 
-class City(BaseModel):
+class Amenity(BaseModel):
     '''
-    initiation of city with an empty string
+    initiation of amenity with an empty string
     ATTR:
-        state_id: string of state identification
         name: string name of city
     '''
     def __init__(self):
-        state_id = ""
         name = ""
