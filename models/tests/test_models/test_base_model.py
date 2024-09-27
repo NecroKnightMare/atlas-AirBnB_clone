@@ -41,6 +41,33 @@ class TestFileStorage(unittest.TestCase):
         key = f"BaseModel.{obj.id}"
         self.assertIn(key, self.storage.all())
         
+    def test_save(self):
+        '''
+        test that saves correct serialized objects to json file
+        '''
+        obj = BaseModel()
+        self.storage.new(obj)
+        self.storage.save()
+        with open(self.file_path, 'r') as f:
+            data = json.loads(f)
+        key = 
+        self.assertIn(key, data)
+        
+    def test_reload(self):
+        '''
+        test that reloads correct deserialized obj from json files
+        '''
+        obj = BaseModel()
+        self.storage.new(obj)
+        self.storage.save()
+        self.storage.reload()
+        key = f"BaseModel.{obj.id}"
+        self.assertIn(key, self.storage.all())
+        
+        
+        
         """
         needs more test
         """
+if __name__ == '__main__':
+    unittest.main()
