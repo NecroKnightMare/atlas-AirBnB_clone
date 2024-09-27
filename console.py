@@ -9,6 +9,7 @@ from datetime import datetime
 entry point to the Command interpreter or prompt
 '''
 
+
 class HBNBCommand(cmd.Cmd):
     '''
     entry point of the command interpreter
