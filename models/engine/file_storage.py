@@ -39,15 +39,14 @@ class FileStorage:
 
     def reload(self):
         """
-        Deserializes the JSON file to __objects 
-        (only if the JSON file (__file_path) exists; otherwise, do nothing).
+        Deserializes the JSON file to __objects (only if the JSON file (__file_path) exists; otherwise, do nothing).
         """
         try:
             with open(FileStorage.__file_path, "r") as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
                     class_name, obj_id = key.split('.')
-                    # Import the classes here to avoid circular imports
+                    # Import the class dynamically, preserving the original case... Ideally
                     module = __import__('models.' + class_name.lower(), fromlist=[class_name])
                     class_ = getattr(module, class_name)
                     FileStorage.__objects[key] = class_(**value)
