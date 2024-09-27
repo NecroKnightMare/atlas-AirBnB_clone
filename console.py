@@ -5,7 +5,9 @@ import json
 import os
 import uuid
 from datetime import datetime
-
+'''
+entry point to the Command interpreter or prompt
+'''
 
 class HBNBCommand(cmd.Cmd):
     '''
