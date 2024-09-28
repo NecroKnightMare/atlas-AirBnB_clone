@@ -1,57 +1,54 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
 import uuid
 from datetime import datetime
-
+from models.storage import storage
 
 class BaseModel:
     """
-    Base class for all AirBnB models.
-
-    Attributes:
-        id (str): Unique identifier for the object.
-        created_at (datetime): Date and time the object was created.
-        updated_at (datetime): Date and time the object was last updated.
+    Serves as a base class for all models in the HBNB application.
+    Provides common attributes and methods for other classes to inherit.
     """
-
+    
     def __init__(self, *args, **kwargs):
         """
         Initializes a new BaseModel instance.
-
-        Args:
-            *args: argument list
-            **kwargs: Keyword arguments representing attributes.
+        
+        :param args: Argument list (not used)
+        :param kwargs: Keyword arguments representing attributes
         """
         if kwargs:
-
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key in ['created_at', 'updated_at']:
                         value = datetime.fromisoformat(value)
                     setattr(self, key, value)
-        if not kwargs:
+        else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            from models import storage #Moved storage here to try to fix import issue. 
-            storage.new(self) 
+            storage.new(self)
 
     def __str__(self):
         """
         Returns a string representation of the Base instance.
+        
+        :return: String representation of the object
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
-        Updates the 'updated_at' attribute with the current date/time.
+        Updates the 'updated_at' attribute with the current date/time and saves the object.
         """
         self.updated_at = datetime.now()
-        from models import storage
         storage.save()
 
     def to_dict(self):
         """
-        Returns a dictionary representation of the Base instance.
+        Converts the object's attributes to a dictionary representation.
+        
+        :return: Dictionary representation of the object
         """
         dict_repr = self.__dict__.copy()
         dict_repr['__class__'] = self.__class__.__name__
