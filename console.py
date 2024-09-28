@@ -6,6 +6,8 @@ import os
 import uuid
 from datetime import datetime
 from models import storage
+import sys
+print(sys.path)
 '''
 entry point to the Command interpreter or prompt
 '''
