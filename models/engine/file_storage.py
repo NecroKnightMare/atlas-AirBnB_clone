@@ -48,6 +48,8 @@ class FileStorage:
                 for key, value in obj_dicts.items():
                     class_name, obj_id = key.split('.')
                     # Import the class dynamically, preserving the original case... Ideally
+                    print(f"Class name from JSON: {class_name}")  
+                    print(f"Import string: {'models.' + class_name}") 
                     module = __import__('models.' + class_name.lower(), fromlist=[class_name])
                     class_ = getattr(module, class_name)
                     FileStorage.__objects[key] = class_(**value)
