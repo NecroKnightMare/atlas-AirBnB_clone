@@ -2,7 +2,6 @@
 
 import uuid
 from datetime import datetime
-from models.storage import storage
 
 class BaseModel:
     """
@@ -27,7 +26,6 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
 
     def __str__(self):
         """
@@ -37,9 +35,11 @@ class BaseModel:
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
-    def save(self):
+    def save(self, storage):
         """
         Updates the 'updated_at' attribute with the current date/time and saves the object.
+        
+        :param storage: Storage object to save the model
         """
         self.updated_at = datetime.now()
         storage.save()
