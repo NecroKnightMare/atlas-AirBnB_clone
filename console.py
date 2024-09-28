@@ -69,11 +69,13 @@ class BaseModel:
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
 
-    class FileStorage:
+class FileStorage:
         '''
         use nathans functions here and update
         '''
 
+
 if __name__ == '__main__':
     storage.reload()  # Call reload here
     console().cmdloop()
+    
