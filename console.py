@@ -5,6 +5,7 @@ import json
 import os
 import uuid
 from datetime import datetime
+from models import storage
 '''
 entry point to the Command interpreter or prompt
 '''
@@ -77,5 +78,4 @@ class FileStorage:
 
 if __name__ == '__main__':
     storage.reload()  # Call reload here
-    console().cmdloop()
-    
+    HBNBCommand().cmdloop()
