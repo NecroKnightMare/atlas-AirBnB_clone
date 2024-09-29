@@ -132,8 +132,5 @@ go through File Storage class and update for Task 7
 '''
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-=======
-    storage.reload()  # Call reload here
->>>>>>> refs/remotes/origin/main
+    storage.reload()
     HBNBCommand().cmdloop()
