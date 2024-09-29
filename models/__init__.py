@@ -1,3 +1,2 @@
-from models.engine.file_storage import FileStorage
-
-storage = FileStorage() 
+from .storage import storage
+from models.base_model import BaseModel

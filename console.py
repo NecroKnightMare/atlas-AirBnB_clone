@@ -5,6 +5,10 @@ import json
 import os
 import uuid
 from datetime import datetime
+from models.storage import storage
+from models.base_model import BaseModel
+
+
 '''
 console module or prompt
 '''
@@ -128,4 +132,8 @@ go through File Storage class and update for Task 7
 '''
 
 if __name__ == '__main__':
+<<<<<<< HEAD
+=======
+    storage.reload()  # Call reload here
+>>>>>>> refs/remotes/origin/main
     HBNBCommand().cmdloop()
