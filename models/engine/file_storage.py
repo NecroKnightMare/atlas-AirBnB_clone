@@ -1,6 +1,6 @@
 import json
 import logging
-
+from models.base_model import BaseModel
 # Configure logging (adjust as needed)
 logging.basicConfig(level=logging.INFO)
 
