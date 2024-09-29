@@ -42,7 +42,7 @@ class BaseModel:
         :param storage: Storage object to save the model
         """
         self.updated_at = datetime.now()
-        storage.save(self)
+        #storage.save()#
 
     def to_dict(self):
         """
