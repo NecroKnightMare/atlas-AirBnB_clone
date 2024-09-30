@@ -9,10 +9,11 @@ State class that inherits from BaseModel
 class State(BaseModel):
     '''
     State class that inherits from BaseModel
-    Init of class
+    Init of class instance
     
     Attr:
         name: state string
     '''
     def __init__(self):
-        name = ""
+        super().__init__(*args, **kwargs)
+        self.name = ""
