@@ -45,3 +45,9 @@ class HBNBCommand(cmd.Cmd):
 if __name__ == '__main__':
     storage.reload()
     HBNBCommand().cmdloop()
+    
+    '''
+    this should be good, test is failing with INFO:root:File 'file.json'
+    not found. No objects loaded.-Debug other files
+    
+    '''
