@@ -1,73 +1,42 @@
 import unittest
-import os
-import json
-from models.engine.file_storage import FileStorage
+from datetime import datetime
 from models.base_model import BaseModel
-from models.user import User
-from models.place import Place
 
-class TestFileStorage(unittest.TestCase):
+
+class TestBaseModel(unittest.TestCase):
     '''
-    unittest for file_storage
+    unittest for BaseModel
     '''
-    def setUp(self):
+    def test_instance(self):
         '''
-        Test for environment
+        test class inheritance
         '''
-        self.storage = FileStorage()
-        self.file_path = FileStorage._FileStorage__file_path
-        if os.path.exists(self.file_path):
-            os.remove(self.file_path)
-            
-    def tearDown(self):
-        '''
-        remove env
-        '''
-        if os.path.exists(self.file_path):
-            os.remove(self.file_path)
-            
-    def test_all(self):
-        '''
-        test if all returns objects dictionary
-        '''
-        self.assertEqual(self.storage.all(), {})
-        
-    def test_new(self):
-        '''
-        test for adding new object to storage
-        '''
-        obj = BaseModel
-        self.storage.new(obj)
-        key = f"BaseModel.{obj.id}"
-        self.assertIn(key, self.storage.all())
+        model = BaseModel()
+        self.assertIsInstance(model, BaseModel)
+        self.assertIsInstance(model, id, str)
+        self.assertIsInstance(model.created_at, datetime)
+        self.assertIsInstance(model.updated_at, datetime)
         
     def test_save(self):
         '''
-        test that saves correct serialized objects to json file
+        test for save method
         '''
-        obj = BaseModel()
-        self.storage.new(obj)
-        self.storage.save()
-        with open(self.file_path, 'r') as f:
-            data = json.loads(f)
-        key = 
-        self.assertIn(key, data)
+        model = BaseModel()
+        old_update_at = model_updated_at
+        model.save()
+        self.assertEqual(model_updated_at, old_updated_at)
+
         
-    def test_reload(self):
+    def test_to_dict(self):
         '''
-        test that reloads correct deserialized obj from json files
+        test to see if its equal outputs
         '''
-        obj = BaseModel()
-        self.storage.new(obj)
-        self.storage.save()
-        self.storage.reload()
-        key = f"BaseModel.{obj.id}"
-        self.assertIn(key, self.storage.all())
-        
-        
-        
-        """
-        needs more test
-        """
+        model = BaseModel()
+        model_dict = model.to_dict()
+        self.assertEqual(model_dict['__class__'], BaseModel)
+        self.assertEqual(model_dict['id'], model.id)
+        self.assertEqual(model_dict['created_at'], model.created_at.isoformat())
+        self.assertEqual(model_dict['updated_at']model.updated_at.isoformat())
+    
 if __name__ == '__main__':
     unittest.main()
