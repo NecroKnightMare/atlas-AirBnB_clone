@@ -25,12 +25,21 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
     
     def do_quit(self, arg):
+        '''
+        quits program
+        '''
         return True
     
     def do_EOF(self, arg):
+        '''
+        ends file
+        '''
         return True
     
     def emptyline(self, arg):
+        '''
+        passes empty line
+        '''
         pass
 
 class BaseModel:
