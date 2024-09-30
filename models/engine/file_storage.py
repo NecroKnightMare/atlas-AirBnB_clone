@@ -52,7 +52,10 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
-                    class_name, obj_id = key.split('.')
+                    #class_name obj_id = key.split('.')
+                    class_name = value['__class__']
+                    obj = globals()class_name
+                    self.__objects[key] = obj
                     if DEBUG_MODE:
                         print(f"Processing class: {class_name}")
 
