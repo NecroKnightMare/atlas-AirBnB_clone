@@ -2,7 +2,7 @@ import json
 import logging
 import os
 
-#from models.base_model import BaseModel#
+from models.base_model import BaseModel
 #Configure logging (adjust as needed)#
 
 logging.basicConfig(level=logging.INFO)
@@ -52,7 +52,7 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
-                    #class_name obj_id = key.split('.')
+                    #class_name obj_id = key.split('.')#
                     class_name = value['__class__']
                     obj_class = globals().get(class_name)
                     if obj_class:
