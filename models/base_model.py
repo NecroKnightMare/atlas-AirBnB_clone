@@ -21,9 +21,9 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
-                    if key in ['created_at', 'updated_at']:
-                        value = datetime.fromisoformat(value)
                     setattr(self, key, value)
+            self.created_at = datetime.isoformat(kwargs['created_at'])
+            self.updated_at = datetime.isoformat(kwargs['updated_at'])
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -37,14 +37,14 @@ class BaseModel:
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
-    def save(self, storage):
+    def save(self):
         """
         Updates the 'updated_at' attribute with the current date/time and saves the object.
         
         :param storage: Storage object to save the model
         """
         self.updated_at = datetime.now()
-        storage.save()
+        #storage.save()#
 
     def to_dict(self):
         """
@@ -57,3 +57,6 @@ class BaseModel:
         dict_repr['created_at'] = self.created_at.isoformat()
         dict_repr['updated_at'] = self.updated_at.isoformat()
         return dict_repr
+##
+# Ariel:
+# Needs test files to pass the rest of task 3##

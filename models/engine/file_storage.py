@@ -1,7 +1,10 @@
 import json
 import logging
+import os
+
 from models.base_model import BaseModel
-# Configure logging (adjust as needed)
+#Configure logging (adjust as needed)#
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -46,12 +49,17 @@ class FileStorage:
         DEBUG_MODE = True  # Set to False in production
 
         try:
-            with open(FileStorage.__file_path, "r") as f:
+            with open(FileStorage.__file_path, 'r') as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
-                    class_name, obj_id = key.split('.')
-                    if DEBUG_MODE:
-                        print(f"Processing class: {class_name}")
+                    #class_name obj_id = key.split('.')#
+                    class_name = value['__class__']
+                    obj_class = globals().get(class_name)
+                    if obj_class:
+                        obj = obj_class(**value)
+                        self.__objects[key] = obj
+                        if DEBUG_MODE:
+                            print(f"Processing class: {class_name}")
 
                     try:
                         module = __import__('models.' + class_name, fromlist=[class_name])
