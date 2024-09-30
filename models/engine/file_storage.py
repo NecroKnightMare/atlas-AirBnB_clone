@@ -49,12 +49,12 @@ class FileStorage:
         DEBUG_MODE = True  # Set to False in production
 
         try:
-            with open(FileStorage.__file_path, "r") as f:
+            with open(FileStorage.__file_path, 'r') as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
                     #class_name obj_id = key.split('.')
                     class_name = value['__class__']
-                    obj = globals().get(class_name)
+                    obj_class = globals().get(class_name)
                     if obj_class:
                         obj = obj_class(**value)
                         self.__objects[key] = obj
