@@ -54,10 +54,12 @@ class FileStorage:
                 for key, value in obj_dicts.items():
                     #class_name obj_id = key.split('.')
                     class_name = value['__class__']
-                    obj = globals()class_name
-                    self.__objects[key] = obj
-                    if DEBUG_MODE:
-                        print(f"Processing class: {class_name}")
+                    obj = globals().get(class_name)
+                    if obj_class:
+                        obj = obj_class(**value)
+                        self.__objects[key] = obj
+                        if DEBUG_MODE:
+                            print(f"Processing class: {class_name}")
 
                     try:
                         module = __import__('models.' + class_name, fromlist=[class_name])
