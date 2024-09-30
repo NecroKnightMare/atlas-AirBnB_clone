@@ -1,16 +1,15 @@
 import json
-import logging
-import os
-
 from models.base_model import BaseModel
-#Configure logging (adjust as needed)#
-
-logging.basicConfig(level=logging.INFO)
 
 
 class FileStorage:
     """
-    Handles serialization of objects to JSON file and deserialization of JSON file to objects.
+    Serializes instances to a JSON file and
+      deserializes JSON file to instances.
+
+    Attributes:
+        __file_path (str): Path to the JSON file.
+        __objects (dict): Dictionary to store objects by `<class name>.id`.
     """
 
     __file_path = "file.json"
@@ -18,17 +17,13 @@ class FileStorage:
 
     def all(self):
         """
-        Returns the dictionary of stored objects.
-
-        :return: Dictionary of all stored objects
+        Returns the dictionary __objects.
         """
         return FileStorage.__objects
 
     def new(self, obj):
         """
-        Adds a new object to the storage.
-
-        :param obj: Object to be added
+        Sets in __objects the obj with key <obj class name>.id.
         """
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
@@ -37,7 +32,9 @@ class FileStorage:
         """
         Serializes __objects to the JSON file (path: __file_path).
         """
-        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+        obj_dicts = {
+            key: obj.to_dict() for key, obj in FileStorage.__objects.items()
+        }
         with open(FileStorage.__file_path, "w") as f:
             json.dump(obj_dicts, f)
 
@@ -46,34 +43,15 @@ class FileStorage:
         Deserializes the JSON file to __objects (only if the JSON file (__file_path) exists;
         otherwise, do nothing).
         """
-        DEBUG_MODE = True  # Set to False in production
-
         try:
-            with open(FileStorage.__file_path, 'r') as f:
+            with open(FileStorage.__file_path, "r") as f:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
-                    #class_name obj_id = key.split('.')#
-                    class_name = value['__class__']
-                    obj_class = globals().get(class_name)
-                    if obj_class:
-                        obj = obj_class(**value)
-                        self.__objects[key] = obj
-                        if DEBUG_MODE:
-                            print(f"Processing class: {class_name}")
-
-                    try:
-                        module = __import__('models.' + class_name, fromlist=[class_name])
-                        class_ = getattr(module, class_name)
-                        if DEBUG_MODE:
-                            print(f"Successfully imported class: {class_name}")
-                        FileStorage.__objects[key] = class_(**value)
-                    except ImportError as e:
-                        logging.error(f"Error importing class {class_name}: {str(e)}")
-                    except AttributeError as e:
-                        logging.error(f"Error getting class {class_name} from module: {str(e)}")
-                    except Exception as e:
-                        logging.error(f"Error creating instance of {class_name}: {str(e)}")
+                    class_name, obj_id = key.split('.')
+                    print(f"Class name from JSON: {class_name}")  
+                    print(f"Import string: {'models.' + class_name}") 
+                    module = __import__('models.' + class_name, fromlist=[class_name])
+                    class_ = getattr(module, class_name)
+                    FileStorage.__objects[key] = class_(**value)
         except FileNotFoundError:
-            logging.info(f"File '{FileStorage.__file_path}' not found. No objects loaded.")
-        except Exception as e:
-            logging.error(f"An error occurred during reload: {str(e)}")
+            pass
