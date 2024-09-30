@@ -4,11 +4,14 @@ import cmd
 import json
 import os
 import uuid
+import logging
+
+from models import storage
 from datetime import datetime
 from models.storage import storage
 from models.base_model import BaseModel
 
-
+logging.basicConfig(level=logging.INFO)
 '''
 console module or prompt
 '''
@@ -34,6 +37,7 @@ class HBNBCommand(cmd.Cmd):
         '''
         ends file
         '''
+        print()
         return True
     
     def emptyline(self, arg):
