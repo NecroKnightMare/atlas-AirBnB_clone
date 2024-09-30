@@ -1,5 +1,6 @@
 #!/bin/usr/python3
 import json
+import importlib
 
 class FileStorage:
     """
@@ -49,8 +50,18 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     print(f"Class name from JSON: {class_name}")  
                     print(f"Import string: {'models.' + class_name}") 
-                    module = __import__('models.' + class_name, fromlist=[class_name])
-                    class_ = getattr(module, class_name)
-                    FileStorage.__objects[key] = class_(**value)
+
+                    try:
+                        # Use importlib for dynamic import
+                        module = importlib.import_module('models.' + class_name)
+                        class_ = getattr(module, class_name)
+
+                        FileStorage.__objects[key] = class_(**value)
+                    except ImportError as e:
+                        print(f"Error importing class {class_name}: {str(e)}") 
+                    except AttributeError as e:
+                        print(f"Error getting class {class_name} from module: {str(e)}")
+                    except Exception as e:
+                        print(f"Error creating instance of {class_name}: {str(e)}") 
         except FileNotFoundError:
             pass
