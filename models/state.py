@@ -14,6 +14,6 @@ class State(BaseModel):
     Attr:
         name: state string
     '''
-    def __init__(self, name,  *args, **kwargs):
+    def __init__(self, name: str = "", *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.name = ""
+        self.name = name
