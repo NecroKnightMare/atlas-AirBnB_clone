@@ -47,16 +47,14 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as f:
                 obj_dicts = json.load(f)
-                print(f"Loaded obj_dicts: {obj_dicts}")
                 for key, value in obj_dicts.items():
                     class_name, obj_id = key.split('.')
                     print(f"Class name from JSON: {class_name}")  
                     print(f"Import string: {'models.' + class_name}") 
 
                     try:
-                        # Use importlib for dynamic import
-                        module = importlib.import_module('models.' + class_name)
-                        print(f"Imported module: {module}")
+                        # Modified dynamic import approach
+                        module = __import__('models', fromlist=[class_name])
                         class_ = getattr(module, class_name)
 
                         FileStorage.__objects[key] = class_(**value)
