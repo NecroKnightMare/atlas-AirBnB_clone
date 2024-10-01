@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
             do_EOF: EOF command to exit program
             emptyline: empty line     
     '''
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     
     def do_quit(self, arg):
         '''
