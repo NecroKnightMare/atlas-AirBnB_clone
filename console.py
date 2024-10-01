@@ -51,22 +51,100 @@ class HBNBCommand(cmd.Cmd):
         '''
         pass
 
-    def create(self, arg):
+    def do_create(self, arg):
         '''
-
+        cretate object
         '''
         if not arg:
-            print("**class is missing**")
+            print("** class is missing **")
             return
         try:
-            clss = globals()[arg]
+            clss = [arg]
             if not issubclass(clss, BaseModel):
                 raise KeyError
             obj = clss()
             obj.save()
             print(obj.id)
         except KeyError:
-            print("* class doesn't exist **")
+            print("** class doesn't exist **")
+
+    def do_show(self, arg):
+        '''
+        '''
+        args = arg.split()
+        if not args:
+            print("** class is missing **")
+            return
+        if not args [0]:
+            print("** class doesn't exist **")
+            return
+        if len (args) < 2:
+            print("** instance id missing **")
+            return
+        key = f"{args[0]}.{args[1]}"
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+
+    def do_destroy(self, arg):
+        '''
+        '''
+        args = arg.split()
+        if not args:
+            print("** class name missing **")
+            return
+        if not args[0]:
+            print("** class doesn't exist **")
+            return
+        if len (args) < 2:
+            print("** instance id missing **")
+            return
+        key = f"{args[0]}.{args[1]}"
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+        del storage.all()[key]
+        storage.save
+
+    def do_all(self, arg):
+        '''
+        '''
+        if arg and args not in globals():
+            print("** class doesn't exist **")
+            return
+        objs = storage.all()
+        if arg:
+            objs = {k: v for k, v in objs.items() if k.startswith(arg)}
+        print([str(obj) for obj in obj.values()])
+
+    def do_update(self, arg):
+        '''
+        '''
+        args = arg.split()
+        if not args:
+            print("** class name missing **")
+            return
+        if args[0] not in globals():
+            print("** class doesn't exist **")
+            return
+        if len < 2 :
+            print("** instance id missing **")
+            return
+        key = f"{args[0]}. {args[1]}"
+        if key not found in storage.all():
+            print("** no instance found **")
+            return
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        obj = storage.all()[key]
+        attr_name = args[2]
+        attr_value = args[3].strip('"')
+        setattr(obj, attr_name, attr_value)
+        obj.save
 
 
 if __name__ == '__main__':
