@@ -1,7 +1,7 @@
 import unittest
 from models.state import State
 
-class TestState(unittest.Testcase):
+class TestState(unittest.TestCase):
     '''
     tests for State class
     '''

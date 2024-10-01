@@ -1,7 +1,7 @@
 import unittest
 from models.amenity import Amenity
 
-class TestState(unittest.Testcase):
+class TestState(unittest.TestCase):
     '''
     tests for Amenity class
     '''

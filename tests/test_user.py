@@ -1,7 +1,7 @@
 import unittest
 from models.user import User
 
-class TestUser(unittest.Testcase):
+class TestUser(unittest.TestCase):
     '''
     unittest for User
     '''

@@ -1,7 +1,7 @@
 import unittest
 from models.city import City
 
-class TestCity(unittest.Testcase):
+class TestCity(unittest.TestCase):
     '''
     tests for City class
     '''

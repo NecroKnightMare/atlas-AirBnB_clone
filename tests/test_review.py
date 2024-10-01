@@ -1,7 +1,7 @@
 import unittest
 from models.review import Review
 
-class TestState(unittest.Testcase):
+class TestState(unittest.TestCase):
     '''
     tests for Review class
     '''
