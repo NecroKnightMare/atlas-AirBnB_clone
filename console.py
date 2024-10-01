@@ -42,7 +42,9 @@ class HBNBCommand(cmd.Cmd):
         '''
         print()
         return True
-    
+   
+    import console
+
     def emptyline(self, arg):
         '''
         passes empty line
@@ -129,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         key = f"{args[0]}. {args[1]}"
-        if key not found in storage.all():
+        if key not in storage.all():
             print("** no instance found **")
             return
         if len(args) < 3:
