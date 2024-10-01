@@ -19,6 +19,7 @@ class BaseModel:
         :param kwargs: Keyword arguments representing attributes
         """
         if kwargs:
+            self.id = kwargs.get('id')
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.fromisoformat(value)
