@@ -75,3 +75,10 @@ class FileStorage:
                         print(f"Error creating instance of {class_name}: {str(e)}") 
         except FileNotFoundError:
             pass
+
+    def destroy(self, obj):
+        """Removes an object from __objects if it's present."""
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        if key in self.__objects:
+            del self.__objects[key]
+            self.save()
