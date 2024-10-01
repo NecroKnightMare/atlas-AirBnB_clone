@@ -1,4 +1,4 @@
-#!/usr/bin/python3  # Corrected shebang line
+#!/usr/bin/python3
 
 import sys
 import os
