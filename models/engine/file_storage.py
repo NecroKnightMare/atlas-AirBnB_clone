@@ -33,11 +33,20 @@ class FileStorage:
         """
         Serializes __objects to the JSON file (path: __file_path).
         """
-        obj_dicts = {
-            key: obj.to_dict() for key, obj in FileStorage.__objects.items()
-        }
+        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+
+        # Try to load existing data from the file
+        try:
+            with open(FileStorage.__file_path, "r") as f:
+                existing_data = json.load(f)
+        except FileNotFoundError:
+            existing_data = {}  # If the file doesn't exist, start with an empty dictionary
+
+        # Merge existing data with new objects
+        combined_data = {**existing_data, **obj_dicts}
+
         with open(FileStorage.__file_path, "w") as f:
-            json.dump(obj_dicts, f)
+            json.dump(combined_data, f)
 
     def reload(self):
         """
