@@ -6,6 +6,12 @@ import cmd
 import logging
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -51,21 +57,32 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        '''
-        cretate object
-        '''
+        """
+        Creates a new instance of a class, saves it, and prints the id
+        """
         if not arg:
-            print("** class is missing **")
+            print("** class name missing **")
             return
+
+        # Mapping
+        class_map = {
+            'BaseModel': BaseModel,
+            'User': User,
+            'State': State,
+            'City': City,
+            'Amenity': Amenity,
+            'Place': Place,
+            'Review': Review
+        }
+
         try:
-            clss = globals()[arg]
-            if not isinstance(clss, type) or not issubclass(clss, BaseModel):
-                raise KeyError
-            obj = clss()
+            cls = class_map[arg]
+            obj = cls()
             obj.save()
             print(obj.id)
         except KeyError:
             print("** class doesn't exist **")
+
 
     def do_show(self, arg):
         '''
