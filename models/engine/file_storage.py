@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json
 import importlib
-from models.base_model import BaseModel
+#from models.base_model import BaseModel
 
 class FileStorage:
     """
