@@ -53,7 +53,7 @@ def save(self):
             json.dump(combined_data, f)
             f.flush()
             print("Data written to file successfully!")  # Debugging print
-    except Exception as e:  # Correct indentation for the except block
+    except Exception as e:
         print(f"Error saving data to file: {e}")
 
     def reload(self):
