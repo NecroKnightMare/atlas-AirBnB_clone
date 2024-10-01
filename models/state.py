@@ -9,4 +9,4 @@ class State(BaseModel):
     Attributes:
         name (str): The name of the state.
     """
-    name = "Default State Name"
+    name = "State Name"
