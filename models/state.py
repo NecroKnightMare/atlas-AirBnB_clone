@@ -16,5 +16,5 @@ class State(BaseModel):
     '''
     def __init__(self, name, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.name = name
+        self.__name = name
         print(self.__dict__)
