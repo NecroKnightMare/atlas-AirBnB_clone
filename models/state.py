@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 
 from models.base_model import BaseModel
 
@@ -6,15 +6,18 @@ from models.base_model import BaseModel
 State class that inherits from BaseModel
 '''
 
+
 class State(BaseModel):
     '''
     State class that inherits from BaseModel
-    Init of class instance
     
     Attr:
         name: state string
     '''
-    def __init__(self, name, *args, **kwargs):
+
+    def __init__(self, *args, **kwargs):
+        """
+        Initializes a new State instance.
+        """
         super().__init__(*args, **kwargs)
-        self.__name = name
-        print(self.__dict__)
+        self.name = kwargs.get('name', "")  # Access name from kwargs
