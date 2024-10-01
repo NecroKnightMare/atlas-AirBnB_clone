@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         '''
         '''
         args = arg.split()
-        if args[0] not in globals():
+        if args[0] not in self.class_map:
             print("** class is missing **")
             return
         if not args [0]:
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        if args[0] not in globals():
+        if args[0] not in self.class_map:
             print("** class doesn't exist **")
             return
         if len (args) < 2:
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         '''
         '''
-        if arg and arg not in globals():
+        if arg and arg not in self.class_map:
             print("** class doesn't exist **")
             return
         objs = storage.all()
@@ -138,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        if args[0] not in globals():
+        if args[0] not in self.class_map:
             print("** class doesn't exist **")
             return
         if len < 2 :
@@ -158,7 +158,7 @@ class HBNBCommand(cmd.Cmd):
         attr_name = args[2]
         attr_value = args[3].strip('"')
         setattr(obj, attr_name, attr_value)
-        obj.save
+        obj.save()
 
 
 if __name__ == '__main__':
