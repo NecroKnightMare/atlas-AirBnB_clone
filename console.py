@@ -123,13 +123,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
-        else:
-            key = f"{args[0]}.{args[1]}"
-        if key not in storage.all():
+    
+        key = f"{args[0]}.{args[1]}"  # Moved outside else
+
+        if key not in storage.all():  #key is always defined
             print("** no instance found **")
         else:
-            obj = storage.all()[key]
-            storage.destroy(obj)
+            obj = storage.all()[key]  # Get the object
+            storage.destroy(obj)     # Call the destroy method on FileStorage
 
     def do_all(self, arg):
         """
