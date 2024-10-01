@@ -11,7 +11,7 @@ class TestState(unittest.Testcase):
         '''
         state = State()
         self.assertIsInstance(state, State)
-        self.assertEqual(stat.name, "")
+        self.assertEqual(state.name, "")
 
     def test_atters(self):
         '''
@@ -36,9 +36,9 @@ class TestState(unittest.Testcase):
         test to see if save works properly
         '''
         state = State()
-        old_update_at = state.updated_at 
+        old_updated_at = state.updated_at 
         state.save()
-        self.assertNotEqual(state.uodated_at, old_updated_at)
+        self.assertNotEqual(state.updated_at, old_updated_at)
 
 if __name__ == '__main__':
     unittest.main()
