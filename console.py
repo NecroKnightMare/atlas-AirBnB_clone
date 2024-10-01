@@ -1,15 +1,19 @@
-#!/bin/usr/python3
+#!/usr/bin/python3  # Corrected shebang line
+
+import sys
+import os
+
+# Get the absolute path to the project's root directory
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# Append the project root to sys.path
+sys.path.append(PROJECT_ROOT) 
 
 import cmd
 import logging
-import sys
-import os 
-
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                            sys.path.append(PROJECT_ROOT)
-
 from models import storage
 from models.base_model import BaseModel
+
 
 logging.basicConfig(level=logging.INFO)
 print(sys.path)
@@ -17,7 +21,6 @@ print(sys.path)
 '''
 console module or prompt
 '''
-
 class HBNBCommand(cmd.Cmd):
     '''
     entry point of the command interpreter
