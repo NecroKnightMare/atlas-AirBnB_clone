@@ -31,27 +31,16 @@ class FileStorage:
 
     def save(self):
         """
-        Serializes __objects to the JSON file (path: __file_path).
+        Serializes __objects to the JSON file.
         """
-        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
-
-        # Try to load existing data from the file
-        try:
-            with open(FileStorage.__file_path, "r") as f:
-                existing_data = json.load(f)
-        except FileNotFoundError:
-            existing_data = {}  # If the file doesn't exist, start with an empty dictionary
-
-        # Merge existing data with new objects
-        combined_data = {**existing_data, **obj_dicts}
-
+        obj_dicts = {key: obj.to.dict() for key, obj in
+                     FileStorage.__objects.items()}
+        
         try:
             with open(FileStorage.__file_path, "w") as f:
-                print(f"Writing data: {combined_data}")
-                json.dump(combined_data, f)
-                f.flush()
-                print("Data written to file successfully!")  # Debugging print
-        except Exception as e:  # Correct indentation for the except block
+                json.dump(obj_dicts, f)
+                print("Data written to file successfully")
+        except Exception as e:
             print(f"Error saving data to file: {e}")
 
     def reload(self):
@@ -62,6 +51,7 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as f:
                 obj_dicts = json.load(f)
+                FileStorage.__objects.clear()
                 for key, value in obj_dicts.items():
                     class_name, obj_id = key.split('.')
 
