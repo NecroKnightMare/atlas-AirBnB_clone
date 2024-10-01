@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+This module provides a console interface for interacting with the AirBnB clone data model.
+"""
 
 import os
 import sys
