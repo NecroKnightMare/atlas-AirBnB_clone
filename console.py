@@ -50,6 +50,7 @@ class HBNBCommand(cmd.Cmd):
         passes empty line
         '''
         pass
+    def create
 
 if __name__ == '__main__':
     storage.reload()
