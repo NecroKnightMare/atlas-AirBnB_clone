@@ -52,9 +52,9 @@ class HBNBCommand(cmd.Cmd):
         return True
    
     def emptyline(self, arg):
-        '''
-        passes empty line
-        '''
+        """
+        Handles an empty line input (does nothing in this case).
+        """
         pass
 
     def do_create(self, arg):
