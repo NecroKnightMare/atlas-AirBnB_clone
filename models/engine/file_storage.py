@@ -49,6 +49,7 @@ class FileStorage:
 
         with open(FileStorage.__file_path, "w") as f:
             json.dump(combined_data, f)
+            f.flush()
 
     def reload(self):
         """
