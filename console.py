@@ -6,6 +6,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 # Append the project root to sys.path
 sys.path.append(PROJECT_ROOT) 
 
+import os
 import sys
 import cmd
 import logging
