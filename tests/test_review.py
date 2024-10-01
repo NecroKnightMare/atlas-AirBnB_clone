@@ -14,10 +14,9 @@ class TestState(unittest.Testcase):
         self.assertEqual(review.user_id, "")
         self.assertEqual(review.text, "")
 
-'''    def test_atters(self):
-        '''
-        test attributtes for review
-        '''
+    ''' def test_atters(self):
+    '''
+    '''
         review = Review()
         review.place_id = ""
         review.user_id =
@@ -27,9 +26,6 @@ class TestState(unittest.Testcase):
         self.assertEqual(review.text, "")
 
     def test_to_dict_method(self):
-        '''
-        tests to check if part of dictionary
-        '''
         review = Review()
         review_dict = review.to_dict()
         self.assertIsInstance(review_dict, dict)
@@ -39,10 +35,9 @@ class TestState(unittest.Testcase):
         self.assertEqual(review_dict['text'], "")
 
     def test_save_method(self):
-        '''
-        test to see if save works properly
-        '''
-        review = Review()
+    '''
+    '''
+    review = Review()
         old_update_at = review.updated_at 
         review.save()
         self.assertNotEqual(review.updated_at, old_updated_at)
