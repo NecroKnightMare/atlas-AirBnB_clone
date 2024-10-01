@@ -39,7 +39,7 @@ class TestCity(unittest.TestCase):
         test to see if save works properly
         '''
         city = City()
-        old_update_at = city.updated_at 
+        old_updated_at = city.updated_at 
         city.save()
         self.assertNotEqual(city.updated_at, old_updated_at)
 
