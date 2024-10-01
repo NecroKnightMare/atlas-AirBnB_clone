@@ -48,8 +48,6 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
    
-    import console
-
     def emptyline(self, arg):
         '''
         passes empty line
