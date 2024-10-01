@@ -112,19 +112,19 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print(storage.all()[key])
 
-    def do_destroy(self, arg):
-        """
-        Deletes an instance based on the class name and id.
-        """
-        args = arg.split()
-        if not args:
-            print("** class name missing **")
-        elif args[0] not in self.class_map:
-            print("** class doesn't exist **")
-        elif len(args) < 2:
-            print("** instance id missing **")
-        else:
-            key = f"{args[0]}.{args[1]}"
+def do_destroy(self, arg):
+    """
+    Deletes an instance based on the class name and id.
+    """
+    args = arg.split()
+    if not args:
+        print("** class name missing **")
+    elif args[0] not in self.class_map:
+        print("** class doesn't exist **")
+    elif len(args) < 2:
+        print("** instance id missing **")
+    else:
+        key = f"{args[0]}.{args[1]}"
         if key not in storage.all():
             print("** no instance found **")
         else:
