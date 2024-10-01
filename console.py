@@ -163,6 +163,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 4:
                 print("** value missing **")
             else:
+                print(f"Deleting object with key: {key}")
                 obj = storage.all()[key]
                 attr_name = args[2]
                 attr_value = args[3].strip('"')

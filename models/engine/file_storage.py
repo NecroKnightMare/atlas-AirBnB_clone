@@ -34,6 +34,7 @@ class FileStorage:
         """
         Serializes __objects to the JSON file (path: __file_path).
         """
+        print("Saving objects to file...")
         obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
 
         # Try to load existing data from the file
@@ -80,5 +81,6 @@ class FileStorage:
         """Removes an object from __objects if it's present."""
         key = f"{obj.__class__.__name__}.{obj.id}"
         if key in self.__objects:
+            print(f"Deleting object with key: {key}")
             del self.__objects[key]
             self.save()
