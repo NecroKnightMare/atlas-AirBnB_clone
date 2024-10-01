@@ -50,7 +50,24 @@ class HBNBCommand(cmd.Cmd):
         passes empty line
         '''
         pass
-    #def create
+
+    def create(self, arg):
+        '''
+
+        '''
+        if not arg:
+            print("**class is missing**")
+            return
+        try:
+            clss = globals()[arg]
+            if not issubclass(clss, BaseModel):
+                raise KeyError
+            obj = clss()
+            obj.save()
+            print(obj.id)
+        except KeyError:
+            print("* class doesn't exist **")
+
 
 if __name__ == '__main__':
     storage.reload()
