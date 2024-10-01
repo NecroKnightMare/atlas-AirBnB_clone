@@ -76,7 +76,6 @@ class HBNBCommand(cmd.Cmd):
         """
         Handles an empty line or a line with only spaces (does nothing).
         """
-        print(f"emptyline called with arg: '{arg}'")
         pass
 
     def do_create(self,arg):
