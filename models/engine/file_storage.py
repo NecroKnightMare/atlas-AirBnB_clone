@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 import json
 import importlib
-#from models.base_model import BaseModel
-#from models.user import User
+
 
 class FileStorage:
     """
     Serializes instances to a JSON file and
-      deserializes JSON file to instances.
+    deserializes JSON file to instances.
 
     Attributes:
         __file_path (str): Path to the JSON file.
@@ -31,30 +30,29 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-     """
-     Serializes __objects to the JSON file (path: __file_path).
-     """
-     print("Saving objects to file...")
-     obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+        """
+        Serializes __objects to the JSON file (path: __file_path).
+        """
+        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
 
-     # Try to load existing data from the file
-    try:
-        with open(FileStorage.__file_path, "r") as f:
-            existing_data = json.load(f)
-    except FileNotFoundError:
-        existing_data = {}  # If the file doesn't exist, start with an empty dictionary
+        # Try to load existing data from the file
+        try:
+            with open(FileStorage.__file_path, "r") as f:
+                existing_data = json.load(f)
+        except FileNotFoundError:
+            existing_data = {}  # If the file doesn't exist, start with an empty dictionary
 
-    # Merge existing data with new objects
-    combined_data = {**existing_data, **obj_dicts}
+        # Merge existing data with new objects
+        combined_data = {**existing_data, **obj_dicts}
 
-    try:
-        with open(FileStorage.__file_path, "w") as f:
-            print(f"Writing data: {combined_data}")
-            json.dump(combined_data, f)
-            f.flush()
-            print("Data written to file successfully!")  # Debugging print
-    except Exception as e:
-        print(f"Error saving data to file: {e}")
+        try:
+            with open(FileStorage.__file_path, "w") as f:
+                print(f"Writing data: {combined_data}")
+                json.dump(combined_data, f)
+                f.flush()
+                print("Data written to file successfully!")  # Debugging print
+        except Exception as e:  # Correct indentation for the except block
+            print(f"Error saving data to file: {e}")
 
     def reload(self):
         """
