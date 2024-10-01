@@ -130,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = storage.all()[key]  # Get the object
                 storage.destroy(obj) # Call the destroy method on FileStorage
-                print("Objects in __objects after deletion:", storage.all())
+                
 
     def do_all(self, arg):
         """

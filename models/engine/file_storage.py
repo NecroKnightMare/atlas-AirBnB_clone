@@ -30,14 +30,14 @@ class FileStorage:
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
-def save(self):
-    """
-    Serializes __objects to the JSON file (path: __file_path).
-    """
-    print("Saving objects to file...")
-    obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+    def save(self):
+     """
+     Serializes __objects to the JSON file (path: __file_path).
+     """
+     print("Saving objects to file...")
+     obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
 
-    # Try to load existing data from the file
+     # Try to load existing data from the file
     try:
         with open(FileStorage.__file_path, "r") as f:
             existing_data = json.load(f)
