@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self, arg):
         """
-        Handles an empty line input (does nothing in this case).
+        Handles an empty line or a line with only spaces (does nothing).
         """
         pass
 
