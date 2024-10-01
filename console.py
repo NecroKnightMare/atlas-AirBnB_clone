@@ -58,8 +58,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class is missing **")
             return
         try:
-            clss = [arg]
-            if not issubclass(clss, BaseModel):
+            clss = globals()[arg]
+            if not isinstance(clss, type) or not issubclass(clss, BaseModel):
                 raise KeyError
             obj = clss()
             obj.save()
@@ -71,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
         '''
         '''
         args = arg.split()
-        if not args:
+        if args[0] not in globals():
             print("** class is missing **")
             return
         if not args [0]:
@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        if not args[0]:
+        if args[0] not in globals():
             print("** class doesn't exist **")
             return
         if len (args) < 2:
@@ -103,12 +103,12 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         del storage.all()[key]
-        storage.save
+        storage.save()
 
     def do_all(self, arg):
         '''
         '''
-        if arg and args not in globals():
+        if arg and arg not in globals():
             print("** class doesn't exist **")
             return
         objs = storage.all()
