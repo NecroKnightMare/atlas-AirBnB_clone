@@ -18,24 +18,24 @@ class TestState(unittest.TestCase):
         test attributtes for state
         '''
         state = State()
-        state.name = "Texas"
-        self.assertEqual(state.name, "Texas")
+        state.name = "Oklahoma"
+        self.assertEqual(state.name, "Oklahoma")
 
     def test_to_dict_method(self):
         '''
         tests to check if part of dictionary
         '''
-        state = State()
+        state = State(name="Oklahoma")
         state_dict = state.to_dict()
         self.assertIsInstance(state_dict, dict)
         self.assertEqual(state_dict['__class__'], 'State')
-        self.assertEqual(state_dict['name'], "")
+        self.assertEqual(state_dict['name'], "Oklahoma")
 
     def test_save_method(self):
         '''
         test to see if save works properly
         '''
-        state = State()
+        state = State(name="Oklahoma")
         old_updated_at = state.updated_at 
         state.save()
         self.assertNotEqual(state.updated_at, old_updated_at)
