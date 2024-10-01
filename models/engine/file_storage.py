@@ -30,26 +30,31 @@ class FileStorage:
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
-    def save(self):
-        """
-        Serializes __objects to the JSON file (path: __file_path).
-        """
-        print("Saving objects to file...")
-        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+def save(self):
+    """
+    Serializes __objects to the JSON file (path: __file_path).
+    """
+    print("Saving objects to file...")
+    obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
 
-        # Try to load existing data from the file
-        try:
-            with open(FileStorage.__file_path, "r") as f:
-                existing_data = json.load(f)
-        except FileNotFoundError:
-            existing_data = {}  # If the file doesn't exist, start with an empty dictionary
+    # Try to load existing data from the file
+    try:
+        with open(FileStorage.__file_path, "r") as f:
+            existing_data = json.load(f)
+    except FileNotFoundError:
+        existing_data = {}  # If the file doesn't exist, start with an empty dictionary
 
-        # Merge existing data with new objects
-        combined_data = {**existing_data, **obj_dicts}
+    # Merge existing data with new objects
+    combined_data = {**existing_data, **obj_dicts}
 
+    try:
         with open(FileStorage.__file_path, "w") as f:
+            print(f"Writing data: {combined_data}")
             json.dump(combined_data, f)
             f.flush()
+            print("Data written to file successfully!")  # Debugging print
+    except Exception as e:  # Correct indentation for the except block
+        print(f"Error saving data to file: {e}")
 
     def reload(self):
         """
