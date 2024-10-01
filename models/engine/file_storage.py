@@ -49,8 +49,7 @@ class FileStorage:
                 obj_dicts = json.load(f)
                 for key, value in obj_dicts.items():
                     class_name, obj_id = key.split('.')
-                    print(f"Class name from JSON: {class_name}")  
-                    print(f"Import string: {'models.' + class_name}") 
+
 
                     try:
                         # Modified dynamic import approach
