@@ -5,6 +5,10 @@ class TestState(unittest.Testcase):
     '''
     tests for Amenity class
     '''
+    def test_amenity_name(self):
+        amenity = Amenity(name="WiFi")
+        self.assertEqual(amenity.name, "WiFi")
+        
     def test_initialization(self):
         '''
         test to check if Amenity is from models and if name is empty
