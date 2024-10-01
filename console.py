@@ -63,13 +63,23 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
+    def onecmd(self, line):
+        """
+        Override the onecmd method to handle empty lines.
+        """
+        if not line.strip():
+            return self.emptyline(line)  # Force it to use emptyline
+        else:
+            return super().onecmd(line) 
+
     def emptyline(self, arg):
         """
         Handles an empty line or a line with only spaces (does nothing).
         """
+        print(f"emptyline called with arg: '{arg}'")
         pass
 
-    def do_create(self, arg):
+    def do_create(self,arg):
         """
         Creates a new instance of a class, saves it, and prints the id
         """
