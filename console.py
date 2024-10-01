@@ -2,11 +2,17 @@
 
 import cmd
 import logging
+import sys
+import os 
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                            sys.path.append(PROJECT_ROOT)
 
 from models import storage
 from models.base_model import BaseModel
 
 logging.basicConfig(level=logging.INFO)
+print(sys.path)
 
 '''
 console module or prompt
@@ -49,5 +55,4 @@ if __name__ == '__main__':
     '''
     this should be good, test is failing with INFO:root:File 'file.json'
     not found. No objects loaded.-Debug other files
-    
     '''
