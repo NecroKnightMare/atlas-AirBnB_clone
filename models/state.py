@@ -21,3 +21,4 @@ class State(BaseModel):
         """
         super().__init__(*args, **kwargs)
         self.name = kwargs.get('name', "")  # Access name from kwargs
+        name = ""
