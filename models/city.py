@@ -13,6 +13,5 @@ class City(BaseModel):
         state_id: string of state identification
         name: string name of city
     '''
-    def __init__(self):
-        state_id = ""
-        name = ""
+    state_id = ""
+    name = ""
