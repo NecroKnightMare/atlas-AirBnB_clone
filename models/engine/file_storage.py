@@ -33,7 +33,7 @@ class FileStorage:
         """
         Serializes __objects to the JSON file.
         """
-        obj_dicts = {key: obj.to.dict() for key, obj in
+        obj_dicts = {key: obj.to_dict() for key, obj in
                      FileStorage.__objects.items()}
         
         try:
