@@ -58,8 +58,9 @@ class FileStorage:
                         # Modified dynamic import approach
                         module = __import__('models', fromlist=[class_name])
                         class_ = getattr(module, class_name)
+                        instance = class_(**value)
+                        self.new(instance)
 
-                        FileStorage.__objects[key] = class_(**value)
                     except ImportError as e:
                         print(f"Error importing class {class_name}: {str(e)}") 
                     except AttributeError as e:
