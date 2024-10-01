@@ -8,7 +8,6 @@ import sys
 import cmd
 from models import storage
 from models.base_model import BaseModel
-from inspect import issubclass
 
 # Explicitly import your models
 from models.user import User
