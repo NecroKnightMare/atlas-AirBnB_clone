@@ -69,6 +69,7 @@ Bash
 ["[User] (1234-5678) {...}", "[User] (9876-5432) {...}"]
 
 **Features**
+
 * User Management: Create, update, delete, and display users.
 * Place Management: Create, update, delete, and display places.
 * (More to come!) We're still working on adding more exciting features to this magical console.
