@@ -37,7 +37,7 @@ class TestUser(unittest.TestCase):
         '''
         user = User()
         user_dict = user.to_dict()
-        self.assertEqual(user_dict['__class__'], User)
+        self.assertEqual(user_dict['__class__'], 'User')
 
         
     def test_save_method(self):
