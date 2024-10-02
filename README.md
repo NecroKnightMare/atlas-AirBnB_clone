@@ -121,7 +121,7 @@ The license of knowledge and nihilism.
 We'd like to thank the Python community for their endless support and magical spells (libraries).
 A special thanks to coffee for keeping us fueled during those late-night coding sessions.
 
-[image](https://github.com/user-attachments/assets/8a1275aa-fbeb-4bfe-a303-7d085ec7038a)
+<iframe src="https://bellevueuniversity-my.sharepoint.com/personal/alexlopez_my365_bellevue_edu/_layouts/15/Doc.aspx?sourcedoc={ac610777-81f9-4b75-8344-8ce03bc77002}&amp;action=embedview" width="402px" height="327px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> diagram, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
 
 
 
