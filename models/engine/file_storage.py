@@ -65,9 +65,11 @@ class FileStorage:
                     except ImportError as e:
                         print(f"Error importing class {class_name}: {str(e)}")
                     except AttributeError as e:
-                        print(f"Error getting class {class_name} from module: {str(e)}")
+                        print(f"Error getting class {class_name}
+                              from module: {str(e)}")
                     except Exception as e:
-                        print(f"Error creating instance of {class_name}: {str(e)}")
+                        print(f"Error creating instance of
+                              {class_name}: {str(e)}")
         except FileNotFoundError:
             pass
 
