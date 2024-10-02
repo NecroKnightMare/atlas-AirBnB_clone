@@ -33,8 +33,7 @@ class FileStorage:
         """
         Serializes __objects to the JSON file.
         """
-        obj_dicts = {key: obj.to_dict() for key, obj in
-                     FileStorage.__objects.items()}
+        obj_dicts = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
 
         try:
             with open(FileStorage.__file_path, "w") as f:
@@ -53,11 +52,11 @@ class FileStorage:
                 obj_dicts = json.load(f)
                 FileStorage.__objects.clear()
                 for key, value in obj_dicts.items():
-                    class_name, obj_id = key.split('.')
+                    class_name, obj_id = key.split(".")
 
                     try:
                         # Modified dynamic import approach
-                        module = __import__('models', fromlist=[class_name])
+                        module = __import__("models", fromlist=[class_name])
                         class_ = getattr(module, class_name)
                         instance = class_(**value)
                         self.new(instance)
