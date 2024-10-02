@@ -3,6 +3,7 @@ from models.base_model import BaseModel
 from models import storage
 from datetime import datetime
 import time
+import uuid
 
 
 class TestBaseModel(unittest.TestCase):
@@ -14,23 +15,21 @@ class TestBaseModel(unittest.TestCase):
         '''
         model = BaseModel()
         old_updated_at = model.updated_at
-        time.sleep(1)
-        model.save
         new_updated_at = model.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertTrue(new_updated_at > old_updated_at)
         self.assertIn(f"BaseModel.{model.id}, storage.all()")
 
-'''
+
     def test_instance(self):
-        
+        '''
         test class inheritance
-        
+        '''
         model = BaseModel()
         self.assertIsInstance(model, BaseModel)
-        self.assertIsInstance(model, id, str)
+        self.assertIsInstance(model.id, str)
         self.assertIsInstance(model.created_at, datetime)
-        self.assertIsInstance(model.updated_at, datetime)
+        self.assertIsInstance(model.updated_at, datetime)create
         '''
     def test_to_dict(self):
         '''
