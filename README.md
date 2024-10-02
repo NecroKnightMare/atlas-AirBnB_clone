@@ -120,3 +120,5 @@ The license of knowledge and nihilism.
 **Acknowledgments**
 We'd like to thank the Python community for their endless support and magical spells (libraries).
 A special thanks to coffee for keeping us fueled during those late-night coding sessions.
+
+[AirBnbFlow.pdf](https://github.com/user-attachments/files/17218762/AirBnbFlow.pdf)
