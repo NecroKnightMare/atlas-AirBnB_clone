@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module provides a console interface for interacting with the AirBnB clone data model.
+This module provides a console interface for
+interacting with the AirBnB clone data model.
 """
 
 import os
@@ -30,11 +31,14 @@ class HBNBCommand(cmd.Cmd):
     Methods:
         do_quit: quit command to end program
         do_EOF: EOF command to exit program
-        emptyline: Handles an empty line input
-        do_create: Creates a new instance of a class, saves it, and prints the id
-        do_show: Prints the string representation of an instance
+        emptyline: Handles an empty line
+        do_create: Creates a new instance of a class,
+        saves it, and prints the id
+        do_show: Prints the string representation
+        of an instance
         do_destroy: Deletes an instance
-        do_all: Prints all string representation of all instances based or not on name
+        do_all: Prints all string representation of all
+        instances based or not on name
         do_update: Updates an instance based on name and id
     '''
     prompt = '(hbnb) '
@@ -70,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
         if not line.strip():
             return self.emptyline(line)  # Force it to use emptyline
         else:
-            return super().onecmd(line) 
+            return super().onecmd(line)
 
     def emptyline(self, arg):
         """
@@ -78,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    def do_create(self,arg):
+    def do_create(self, arg):
         """
         Creates a new instance of a class, saves it, and prints the id
         """
@@ -96,7 +100,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Prints the string representation of an instance based on the class name and id.
+        Prints the string representation of an instance
+        based on the class name and id.
         """
         args = arg.split()
         if not args:
@@ -129,12 +134,13 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 obj = storage.all()[key]  # Get the object
-                storage.destroy(obj) # Call the destroy method on FileStorage
+                storage.destroy(obj)  #Call the destroy method on FileStorage
                 print("Objects in __objects after deletion:", storage.all())
 
     def do_all(self, arg):
         """
-        Prints all string representation of all instances based or not on the class name.
+        Prints all string representation of all instances
+        based or not on the class name.
         """
         if arg and arg not in self.class_map:
             print("** class doesn't exist **")
@@ -146,7 +152,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and id by adding or updating attribute.
+        Updates an instance based on the class name and id
+        by adding or updating attribute.
         """
         args = arg.split()
         if not args:
@@ -169,7 +176,8 @@ class HBNBCommand(cmd.Cmd):
                 attr_name = args[2]
                 attr_value = args[3].strip('"')
 
-                # Attempt type casting (Real basic currently, will need to update it eventually)
+                # Attempt type casting (Real basic currently,
+                # will need to update it eventually)
                 try:
                     attr_value = int(attr_value)
                 except ValueError:
