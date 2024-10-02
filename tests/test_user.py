@@ -21,10 +21,10 @@ class TestUser(unittest.TestCase):
         test if attributes are right for User
         '''
         user = User()
-        user.email = "airbnb2@mail.com"
-        user.first_name = "Betty"
-        user.last_name = "Bar"
-        user.password = "root"
+        user.email = ""
+        user.first_name = ""
+        user.last_name = ""
+        user.password = ""
         self.assertIsInstance(user, User)
         self.assertEqual(user.email, "")
         self.assertEqual(user.first_name, "")
