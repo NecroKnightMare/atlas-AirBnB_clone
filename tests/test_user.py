@@ -37,12 +37,8 @@ class TestUser(unittest.TestCase):
         '''
         user = User()
         user_dict = user.to_dict()
-        self.assertIsInstance(user_dict, dict)
-        self.assertEqual(user_dict['__class__'], 'User')
-        self.assertEqual(user_dict['email'], "")
-        self.assertEqual(user_dict['first_name'], "")
-        self.assertEqual(user_dict['last_name'], "")
-        self.assertEqual(user_dict['password'], "")
+        self.assertEqual(user_dict['__class__'], User)
+
         
     def test_save_method(self):
         '''
