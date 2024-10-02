@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module provides a console interface for interacting with the AirBnB clone data model.
+This module provides a console interface for
+interacting with the AirBnB clone data model.
 """
 
 import os
@@ -30,11 +31,14 @@ class HBNBCommand(cmd.Cmd):
     Methods:
         do_quit: quit command to end program
         do_EOF: EOF command to exit program
-        emptyline: Handles an empty line input
-        do_create: Creates a new instance of a class, saves it, and prints the id
-        do_show: Prints the string representation of an instance
+        emptyline: Handles an empty line
+        do_create: Creates a new instance of a class,
+        saves it, and prints the id
+        do_show: Prints the string representation
+        of an instance
         do_destroy: Deletes an instance
-        do_all: Prints all string representation of all instances based or not on name
+        do_all: Prints all string representation of all
+        instances based or not on name
         do_update: Updates an instance based on name and id
     '''
     prompt = '(hbnb) '
@@ -70,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
         if not line.strip():
             return self.emptyline(line)  # Force it to use emptyline
         else:
-            return super().onecmd(line) 
+            return super().onecmd(line)
 
     def emptyline(self, arg):
         """
@@ -78,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    def do_create(self,arg):
+    def do_create(self, arg):
         """
         Creates a new instance of a class, saves it, and prints the id
         """
