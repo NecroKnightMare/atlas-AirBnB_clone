@@ -10,11 +10,11 @@ class BaseModel:
     Serves as a base class for all models in the HBNB application.
     Provides common attributes and methods for other classes to inherit.
     """
-    
+
     def __init__(self, *args, **kwargs):
         """
         Initializes a new BaseModel instance.
-        
+
         :param args: Argument list (not used)
         :param kwargs: Keyword arguments representing attributes
         """
@@ -25,8 +25,6 @@ class BaseModel:
                     value = datetime.fromisoformat(value)
                 if key != '__class__':
                     setattr(self, key, value)
-            #self.created_at = datetime.fromisoformat(kwargs['created_at'])
-            #self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
         else:
             # Create new object
             self.id = str(uuid.uuid4())
@@ -37,15 +35,16 @@ class BaseModel:
     def __str__(self):
         """
         Returns a string representation of the Base instance.
-        
+
         :return: String representation of the object
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
-        Updates the 'updated_at' attribute with the current date/time and saves the object.
-        
+        Updates the 'updated_at' attribute with the current
+        date/time and saves the object.
+
         :param storage: Storage object to save the model
         """
         self.updated_at = datetime.now()
