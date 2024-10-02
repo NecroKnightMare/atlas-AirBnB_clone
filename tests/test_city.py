@@ -22,12 +22,12 @@ class TestCity(unittest.TestCase):
         self.assertEqual(city.state_id, "")
     '''
     def test_to_dict_method(self):
-        '''
-        '''
-        city = City(name="Tulsa", state_id="OK")
-        city_dict = city.to_dict()
-        self.assertEqual(city_dict['name'], "Tulsa")
-        self.assertEqual(city_dict['state_id'], "OK")
+    '''
+    '''
+    city = City(name="Tulsa", state_id="OK")
+    city_dict = city.to_dict()
+    self.assertEqual(city_dict['name'], "Tulsa")
+    self.assertEqual(city_dict['state_id'], "OK")
     '''
         
 
