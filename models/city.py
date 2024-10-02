@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 City inherits from BaseModel
 '''
 
+
 class City(BaseModel):
     '''
     initiation of city with an empty string
