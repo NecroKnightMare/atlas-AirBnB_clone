@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 Amenity inherits from BaseModel
 '''
 
+
 class Amenity(BaseModel):
     '''
     initiation of amenity with an empty string

@@ -18,5 +18,3 @@ class User(BaseModel):  # Inherit from BaseModel
     password = ""
     first_name = ""
     last_name = ""
-
-    # No need for __init__ if it's just setting default attr values, currently at least.
