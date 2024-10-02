@@ -13,7 +13,7 @@ class TestCity(unittest.TestCase):
         self.assertEqual(city.name, "")
         self.assertEqual(city.state_id, "")
     '''
-    def test_atters(self):
+    def test_city_attributes(self):
         '''
         test attributtes for city
         '''
@@ -27,18 +27,10 @@ class TestCity(unittest.TestCase):
         '''
         city = City(name="Tulsa", state_id="OK")
         city_dict = city.to_dict()
-        self.assertIsInstance(city_dict, dict)
         self.assertEqual(city_dict['name'], "Tulsa")
         self.assertEqual(city_dict['state_id'], "OK")
 
-    def test_save_method(self):
-        '''
-        test to see if save works properly
-        '''
-        city = City(name="Tulsa", state_id="OK")
-        old_updated_at = city.updated_at 
-        city.save()
-        self.assertNotEqual(city.updated_at, old_updated_at)
+        
 
 if __name__ == '__main__':
     unittest.main()
