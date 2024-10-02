@@ -121,6 +121,7 @@ The license of knowledge and nihilism.
 We'd like to thank the Python community for their endless support and magical spells (libraries).
 A special thanks to coffee for keeping us fueled during those late-night coding sessions.
 
-![Picture1](https://github.com/user-attachments/assets/8fa8a599-c9e3-43b6-bba2-25fa5642b707)
+[image](https://github.com/user-attachments/assets/8a1275aa-fbeb-4bfe-a303-7d085ec7038a)
+
 
 
