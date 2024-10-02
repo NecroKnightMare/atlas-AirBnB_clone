@@ -9,7 +9,7 @@ class module place that inherits from basemodel
 class Place(BaseModel):
     '''
     initiation of place class
-    
+
     Attr:
         city_id: string - empty string: it will be the City.id
         user_id: string - empty string: it will be the User.id
