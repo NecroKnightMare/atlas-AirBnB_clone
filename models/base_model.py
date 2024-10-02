@@ -52,8 +52,9 @@ class BaseModel:
 
     def to_dict(self):
         """
-        Converts the object's attributes to a dictionary representation.
-        
+        Converts the object's attributes
+        to a dictionary representation.
+
         :return: Dictionary representation of the object
         """
         dict_repr = self.__dict__.copy()
