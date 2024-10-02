@@ -35,7 +35,7 @@ class FileStorage:
         """
         obj_dicts = {key: obj.to_dict() for key, obj in
                      FileStorage.__objects.items()}
-        
+
         try:
             with open(FileStorage.__file_path, "w") as f:
                 json.dump(obj_dicts, f)
@@ -45,7 +45,7 @@ class FileStorage:
 
     def reload(self):
         """
-        Deserializes the JSON file to __objects (only if the JSON file (__file_path) exists;
+        Deserializes the JSON file to __objects if the JSON file exists;
         otherwise, do nothing).
         """
         try:
@@ -63,11 +63,11 @@ class FileStorage:
                         self.new(instance)
 
                     except ImportError as e:
-                        print(f"Error importing class {class_name}: {str(e)}") 
+                        print(f"Error importing class {class_name}: {str(e)}")
                     except AttributeError as e:
                         print(f"Error getting class {class_name} from module: {str(e)}")
                     except Exception as e:
-                        print(f"Error creating instance of {class_name}: {str(e)}") 
+                        print(f"Error creating instance of {class_name}: {str(e)}")
         except FileNotFoundError:
             pass
 
