@@ -100,7 +100,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Prints the string representation of an instance based on the class name and id.
+        Prints the string representation of an instance
+        based on the class name and id.
         """
         args = arg.split()
         if not args:
@@ -133,12 +134,13 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 obj = storage.all()[key]  # Get the object
-                storage.destroy(obj) # Call the destroy method on FileStorage
+                storage.destroy(obj)  #Call the destroy method on FileStorage
                 print("Objects in __objects after deletion:", storage.all())
 
     def do_all(self, arg):
         """
-        Prints all string representation of all instances based or not on the class name.
+        Prints all string representation of all instances
+        based or not on the class name.
         """
         if arg and arg not in self.class_map:
             print("** class doesn't exist **")
@@ -150,7 +152,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and id by adding or updating attribute.
+        Updates an instance based on the class name and id
+        by adding or updating attribute.
         """
         args = arg.split()
         if not args:
@@ -173,7 +176,8 @@ class HBNBCommand(cmd.Cmd):
                 attr_name = args[2]
                 attr_value = args[3].strip('"')
 
-                # Attempt type casting (Real basic currently, will need to update it eventually)
+                # Attempt type casting (Real basic currently,
+                # will need to update it eventually)
                 try:
                     attr_value = int(attr_value)
                 except ValueError:
