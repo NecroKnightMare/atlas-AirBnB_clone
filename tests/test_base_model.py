@@ -14,7 +14,7 @@ class TestBaseModel(unittest.TestCase):
         model = BaseModel()
         old_updated_at = model.updated_at
         model.save()
-        self.assertNotEqual(mmodel.updated_at, old_updated_at)
+        self.assertNotEqual(model.updated_at, old_updated_at)
 
     def test_instance(self):
         '''
