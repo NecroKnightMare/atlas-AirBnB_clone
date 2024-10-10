@@ -48,6 +48,15 @@ h4 {
 	z-index: 3;
 }
 
+.search-bar {
+	font-size: 18px;
+	padding: 10px;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	width: 60%;
+	margin-right: 10px;
+}
+
 .locations:hover .popover, .amenities:hover .popover {
 	display: block;
 	opacity: 100%;
